@@ -17,7 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install --legacy-peer-deps'
-                sh 'ng build'
+                sh 'npm run build -y'
             }
         }  
     }
