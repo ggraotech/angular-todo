@@ -1,24 +1,13 @@
 pipeline {
     agent any
-    tools {nodejs "node"}
-    stages {
-        stage('Checkout') {
-			steps {
-				checkout scm
-			}
-		}
+    tools (nodejs "node")
 
-        stage('Git') {
-            steps {
-                git 'git@github.com:ggraotech/angular-todo.git'
-            }
-        }
-        
+    stages {
         stage('Build') {
             steps {
-                sh 'npm install --legacy-peer-deps'
-                sh 'npm run build -y'
+                git 'git@github.com:ggraotech/angular-todo.git'
+                sh 'npm install'
             }
-        }  
+        }
     }
 }
